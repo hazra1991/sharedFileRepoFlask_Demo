@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <link href = '../static/main.css' rel='stylesheet'>
+  </head>
+  <body>
+      <div class="container">
+        <h1>Welcome to secure file share</h1>
+        <div class='col-lg-5'>
+          <a  style="color:beige" href='/login'>Login</a>
+          <a style="color:beige" href='/register'>Register</a>
+      </div>
+    <div class ='container'>
+      <form action='/register' method="post">
+        <hr>
+        
+        <label for="email"><b>Email</b></label>
+        <input type="email" placeholder="Enter Email" name="email" id="email" required>
+        <br>
+        <label for="password"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="password" id="password" required>
+        <br>
+        <label for="confirmpass"><b>Confirm</b></label>
+        <input type="password" placeholder="Confirm Password" name="confirmpass" id="confirmpass" required>
+        <br>
+        <button type="submit">Register</button>
+        <br>
+        {% if message %}
+        <b>{{message}}</b>
+        {% endif %}
+    </div>
+  </body>
+</html>

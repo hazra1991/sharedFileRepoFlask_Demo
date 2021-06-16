@@ -1,0 +1,38 @@
+<html>
+  <head>
+    <link href = '../static/main.css' rel='stylesheet'>
+  </head>
+  <body>
+      <div class="container">
+        <h1>Welcome to secure file share</h1>
+        {% if username %}
+        <a>Loggedin as {{username}}</a>
+        {% endif %}
+        <div class='col-lg-5'>
+          <a style="color:beige" href='/logout'>Logout</a>
+      </div>
+      <hr>
+    <div class ='container'>
+      <form action = "/filestore?value=upload" method = "POST" enctype = "multipart/form-data">
+        <input type = "file" name = "File" />
+        <button type = "submit">Upload</button>
+     </form>
+     <form action="/filestore?value=download" method="post">
+        <!-- <input type='text' placeholder="Enter filename to download" name='downloadFile'> -->
+        <input list='fileset' placeholder="Drop down to see the files" name='downloadFile'>
+        <datalist id='fileset'>
+          {% for i in fileset %}
+          <option value={{i}}></option>
+          {% endfor %}
+        </datalist>
+
+        <button type='submit'>Download</button>
+        <br>
+        <br>
+        {% if message %}
+        <b style="color:rgb(32, 0, 83)">{{message}}</b>
+        {% endif %}
+    </form>
+    </div>
+  </body>
+</html>
